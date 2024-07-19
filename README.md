@@ -26,7 +26,7 @@ To be able to use the API you have to load a file in your script [manifest](http
 server_script '@discord_api/init.lua'
 ```
 
-Check some [examples]().
+Check some [examples](./examples.lua).
 
 ## 🤖 Language Server
 
