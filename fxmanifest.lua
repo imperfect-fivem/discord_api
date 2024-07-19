@@ -6,6 +6,7 @@ version "0.0.1"
 author "m-imperfect <owner@m-imperfect.net>"
 description "Lua based Discord API."
 
+server_only 'yes'
 server_scripts {
 	'src/init.lua',
 	'src/modules/**.lua',
