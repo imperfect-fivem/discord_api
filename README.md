@@ -6,7 +6,7 @@ Lua based [Discord API](https://discord.com/developers/docs) for [FiveM developm
 
 ## 🔃 Variables (Convar)
 
-For initializing two variables are need to be set in [server.cfg](https://docs.fivem.net/docs/server-manual/setting-up-a-server-vanilla/#servercfg).
+For initializing two variables need to be set in [server.cfg](https://docs.fivem.net/docs/server-manual/setting-up-a-server-vanilla/#servercfg).
 
 - `discord_bot_token` found in [discord's developers portal](https://discord.com/developers/applications).
 - `discord_server_id` for the main server, [finding guide](https://support-dev.discord.com/hc/en-us/articles/360028717192-Where-can-I-find-my-Application-Team-Server-ID).
