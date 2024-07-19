@@ -2,6 +2,7 @@
 
 Lua based [Discord API](https://discord.com/developers/docs) for [FiveM development environment](https://docs.fivem.net/docs/).  
 **Note:** This is a server-side script, use events for any client interactions.  
+**Note:** This script is under development and not fully functional, star and watch the repo for updates.  
 [Download Link](https://github.com/imperfect-fivem/discord_api/releases/latest/download/discord_api.zip)
 
 ## 🔃 Variables (Convar)
