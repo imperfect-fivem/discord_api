@@ -17,3 +17,12 @@ for key, metatable in pairs(metatables) do
 end
 
 DiscordAPI = api
+
+---@param playerSrc string
+---@return string?
+function GetPlayerDiscordId(playerSrc)
+    local identifier = GetPlayerIdentifierByType(playerSrc, 'discord')
+    if identifier then
+        return identifier:match('discord:(.+)')
+    end
+end
