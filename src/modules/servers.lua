@@ -1,3 +1,21 @@
+---@class RawDiscordRole
+---@field id string
+---@field name string
+---@source https://discord.com/developers/docs/topics/permissions#role-object -- TODO: complete
+
+---@class RawDiscordGuildMember
+---@field roles string[]
+---@field user RawDiscordUser
+---@source https://discord.com/developers/docs/resources/guild#guild-member-object -- TODO: complete
+
+---@class RawDiscordServer
+---@field id string
+---@field name string
+---@source https://discord.com/developers/docs/resources/guild#guild-object -- TODO: complete
+
+---@class DiscordAPIServers
+---@field Main? RawDiscordServer
+---@field FetchMember function
 DiscordAPI.Servers = {}
 
 MetaTables.Servers = {
@@ -17,7 +35,9 @@ MetaTables.Servers = {
     end
 }
 
----@type DiscordAPIFetchGuildMember
+---@param raw RawDiscordServer
+---@param memberId string
+---@return RawDiscordGuildMember?
 function DiscordAPI.Servers.FetchMember(raw, memberId)
     local status, data = DiscordAPI.Request('GET', '/guilds/' .. raw.id .. '/members/' .. memberId)
     local reason

@@ -1,3 +1,10 @@
+---@class RawDiscordUser
+---@field id string
+---@field username string
+---@source https://discord.com/developers/docs/resources/user#user-object -- TODO: complete
+
+---@class DiscordAPIUsers
+---@field Me? RawDiscordUser
 DiscordAPI.Users = {}
 
 MetaTables.Users = {

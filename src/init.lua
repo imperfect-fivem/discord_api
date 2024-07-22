@@ -1,3 +1,4 @@
+---@alias MetaTableMap table<string, metatable>
 ---@type MetaTableMap
 MetaTables = {
     _ = {
@@ -16,6 +17,15 @@ MetaTables = {
     }
 }
 
+---@class DiscordAPI
+---@field InitTime integer
+---@field ReachedLimit boolean
+---@field Token string
+---@field ServerId string
+---@field Request function
+---@field ErrorReasons table<integer, string>
+---@field Users DiscordAPIUsers
+---@field Servers DiscordAPIServers
 DiscordAPI = { InitTime = GetGameTimer(), ReachedLimit = false }
 
 DiscordAPI.ErrorReasons = setmetatable({
@@ -37,7 +47,11 @@ local function killAPI(reset)
     TriggerEvent('discord_api:dead', reset)
 end
 
----@type DiscordAPIRequest
+---@param method 'DELETE'|'GET'|'HEAD'|'POST'|'PUT'
+---@param endpoint string
+---@param content? table
+---@param reason? string
+---@return integer status, table response, table<string, string> headers
 function DiscordAPI.Request(method, endpoint, content, reason)
     local result = promise:new()
     local headers = { ["Content-Type"] = "application/json", ["Authorization"] = 'Bot ' .. DiscordAPI.Token }

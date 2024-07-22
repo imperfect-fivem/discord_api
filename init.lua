@@ -18,23 +18,25 @@ local function init()
     DiscordAPI = api
 end
 
----@alias FunctionsMap table<string, function>
----@type { Alive: FunctionsMap, Dead: FunctionsMap }
-DiscordFunctionality = {
-    Alive = setmetatable({}, {
-        __add = function(self, name)
-            self[name] = _G[name]
+---@class DiscordAliveFunctionality
+---@field [string] function
+---@operator add(string): boolean
+DiscordAliveFunctionality = setmetatable({}, {
+    __add = function(self, name)
+        self[name] = _G[name]
+    end
+})
+
+---@class DiscordDeadFunctionality
+---@field [string] function
+DiscordDeadFunctionality = setmetatable({}, {
+    __newindex = function(self, name, functionality)
+        rawset(self, name, functionality)
+        if not DiscordAPI then
+            _G[name] = functionality
         end
-    }),
-    Dead = setmetatable({}, {
-        __newindex = function(self, name, functionality)
-            rawset(self, name, functionality)
-            if not DiscordAPI then
-                _G[name] = functionality
-            end
-        end
-    })
-}
+    end
+})
 
 if
     GetResourceState('discord_api') == 'started' or
@@ -45,12 +47,8 @@ end
 
 ---@param bool boolean
 local function toggleFunctionality(bool)
-    local state = bool and 'Alive' or 'Dead'
-    if DiscordFunctionality and DiscordFunctionality[state] then
-        for name, functionality in pairs(DiscordFunctionality[state]) do
-            _G[name] = functionality
-        end
-    end
+    local functionalities = bool and DiscordAliveFunctionality or DiscordDeadFunctionality
+    for name, functionality in pairs(functionalities) do _G[name] = functionality end
 end
 
 AddEventHandler('discord_api:alive', function(initTime)
