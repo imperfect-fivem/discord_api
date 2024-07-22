@@ -27,7 +27,14 @@ To be able to use the API you have to load a file in your script [manifest](http
 server_script '@discord_api/init.lua'
 ```
 
-Check some [examples](./examples.lua).
+Check some [examples](./examples/simple.lua).
+
+### 🔌 Alive/Dead API Switch
+
+There is a built-in Alive/Dead API switch which takes place when `discord_api` resource is not started, the bot reached it's [limit](https://discord.com/developers/docs/topics/rate-limits), etc...  
+What it does is pretty simple, just redefines some functions that we choose to be empty (dead) ones, so that we get empty results without have to go through a request that (we know for sure) will fail.  
+When the API is ready (`discord_api` resource is started again), it will automatically redefine those function to the Alive version again.  
+Check this live [example](./examples/functionality.lua).
 
 ## 🤖 Language Server
 
