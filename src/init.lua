@@ -3,7 +3,9 @@
 MetaTables = {
     _ = {
         __index = function(self, key)
-            if key == 'Token' then
+            if key == 'CacheTimeout' then
+                return GetConvarInt('discord_bot_token', 6e4)
+            elseif key == 'Token' then
                 return GetConvar('discord_bot_token', 'unset')
             elseif key == 'ServerId' then
                 return GetConvar('discord_server_id', 'unset')
@@ -20,6 +22,7 @@ MetaTables = {
 ---@class DiscordAPI
 ---@field InitTime integer
 ---@field ReachedLimit boolean
+---@field CacheTimeout integer
 ---@field Token string
 ---@field ServerId string
 ---@field Request function

@@ -2,15 +2,19 @@ fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
 
-version "0.0.1"
+version "0.0.2"
 author "m-imperfect <owner@m-imperfect.net>"
 description "Lua based Discord API."
 
+
 server_only 'yes'
 server_scripts {
+    '@ox_lib/init.lua',
 	'src/init.lua',
 	'src/modules/**.lua',
 	'init.lua',
 	'src/checks.lua',
 	-- 'examples.lua',
 }
+
+dependency 'ox_lib'

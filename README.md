@@ -5,6 +5,9 @@ Lua based [Discord API](https://discord.com/developers/docs) for [FiveM developm
 **Note:** This script is under development and not fully functional, star and watch the repo for updates.  
 [Download Link](https://github.com/imperfect-fivem/discord_api/releases/latest/download/discord_api.zip)
 
+## 📥 Dependencies
+[ox_lib](https://github.com/overextended/ox_lib) is required.
+
 ## 🔃 Variables (Convar)
 
 For initializing two variables need to be set in [server.cfg](https://docs.fivem.net/docs/server-manual/setting-up-a-server-vanilla/#servercfg).
