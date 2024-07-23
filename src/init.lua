@@ -4,7 +4,7 @@ MetaTables = {
     _ = {
         __index = function(self, key)
             if key == 'CacheTimeout' then
-                return GetConvarInt('discord_bot_token', 6e4)
+                return GetConvarInt('discord_cache_timeout', 6e4)
             elseif key == 'Token' then
                 return GetConvar('discord_bot_token', 'unset')
             elseif key == 'ServerId' then
