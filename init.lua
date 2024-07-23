@@ -62,10 +62,10 @@ AddEventHandler('discord_api:dead', function(reset)
     toggleFunctionality(false)
 end)
 
----@param playerSrc string
+---@param player number
 ---@return string?
-function GetPlayerDiscordId(playerSrc)
-    local identifier = GetPlayerIdentifierByType(playerSrc, 'discord')
+function GetPlayerDiscordId(player)
+    local identifier = GetPlayerIdentifierByType(player--[[@as string]], 'discord')
     if identifier then
         return identifier:match('discord:(.+)')
     end

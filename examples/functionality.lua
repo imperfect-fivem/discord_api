@@ -1,7 +1,7 @@
 IsDiscordAPIAvailable = GetResourceState('discord_api') ~= 'missing'
 
-function GetPlayerDiscordRoles(playerSrc)
-    local playerDiscordId, discordMember = GetPlayerDiscordId(playerSrc)
+function GetPlayerDiscordRoles(player)
+    local playerDiscordId, discordMember = GetPlayerDiscordId(player)
     local discordServer = DiscordAPI.Servers.Main
     if not discordServer then return {} end
     if playerDiscordId then discordMember = DiscordAPI.Servers.FetchMember(discordServer, playerDiscordId) end
