@@ -7,10 +7,11 @@ author "m-imperfect <owner@m-imperfect.net>"
 description "Lua based Discord API."
 
 server_only 'yes'
+
 dependency 'ox_lib'
+server_script '@ox_lib/init.lua'
 
 server_scripts {
-    '@ox_lib/init.lua',
 	'src/init.lua',
 	'src/modules/**.lua',
 	'init.lua',
