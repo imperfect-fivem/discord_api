@@ -42,4 +42,4 @@ Check this live [example](./examples/functionality.lua).
 ## 🤖 Language Server
 
 - Install [Sumneko Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) Language Server on [Visual Studio Code](https://code.visualstudio.com/).
-- Check `diagnostic.meta.lua` for definitions.
+- Check [`diagnostic.meta.lua`](https://github.com/imperfect-fivem/discord_api/blob/meta/diagnostic.meta.lua) for definitions.
