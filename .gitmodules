@@ -1,0 +1,6 @@
+[submodule "lls-addon"]
+	path = .vscode/lls-addon
+	url = https://github.com/imperfect-fivem/lls-addon.git
+[submodule "ox_lib"]
+	path = .vscode/ox_lib
+	url = https://github.com/overextended/ox_lib.git

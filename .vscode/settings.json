@@ -1,0 +1,9 @@
+{
+  "Lua.runtime.plugin": "./.vscode/lls-addon/plugin.lua",
+  "Lua.workspace.library": [
+    "./.vscode/lls-addon/library/runtime",
+    "./.vscode/lls-addon/library/natives/CFX-NATIVE",
+    "./.vscode/lls-addon/library/natives/GTAV",
+    "./.vscode/ox_lib"
+  ]
+}
