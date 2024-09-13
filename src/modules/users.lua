@@ -3,7 +3,7 @@
 ---@field username string
 ---@source https://discord.com/developers/docs/resources/user#user-object -- TODO: complete
 
----@class DiscordAPIUsers
+---@class DiscordAPI.Users
 ---@field Me? RawDiscordUser
 DiscordAPI.Users = {}
 

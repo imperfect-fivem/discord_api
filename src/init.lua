@@ -27,8 +27,8 @@ MetaTables = {
 ---@field ServerId string
 ---@field Request function
 ---@field ErrorReasons table<integer, string>
----@field Users DiscordAPIUsers
----@field Servers DiscordAPIServers
+---@field Users DiscordAPI.Users
+---@field Servers DiscordAPI.Servers
 DiscordAPI = { InitTime = GetGameTimer(), ReachedLimit = false }
 
 DiscordAPI.ErrorReasons = setmetatable({
@@ -69,7 +69,8 @@ function DiscordAPI.Request(method, endpoint, content, reason)
             DiscordAPI.ReachedLimit = true
             killAPI(false)
             local resetSeconds = tonumber(responseHeaders['X-RateLimit-Reset-After']) or 30
-            print(('\27[30;41m Rete Limit \27[0;31m Reached limited,\27[33m available again in %s minutes\27[31m.\27[0m'):format(math.ceil(resetSeconds / 60)))
+            print(('\27[30;41m Rete Limit \27[0;31m Reached limited,\27[33m available again in %s minutes\27[31m.\27[0m')
+                :format(math.ceil(resetSeconds / 60)))
             SetTimeout(resetSeconds * 1e3, function()
                 DiscordAPI.ReachedLimit = false
                 TriggerEvent('discord_api:alive', DiscordAPI.InitTime)

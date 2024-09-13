@@ -13,7 +13,7 @@
 ---@field name string
 ---@source https://discord.com/developers/docs/resources/guild#guild-object -- TODO: complete
 
----@class DiscordAPIServers
+---@class DiscordAPI.Servers
 ---@field Main? RawDiscordServer
 ---@field FetchMember function
 DiscordAPI.Servers = {}
