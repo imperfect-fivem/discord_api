@@ -18,25 +18,14 @@ local function init()
     DiscordAPI = api
 end
 
----@class DiscordAliveFunctionality
----@field [string] function
----@operator add(string): boolean
-DiscordAliveFunctionality = setmetatable({}, {
-    __add = function(self, name)
-        self[name] = _G[name]
-    end
-})
+local functionalities = { alive = {}, dead = {} }
 
----@class DiscordDeadFunctionality
----@field [string] function
-DiscordDeadFunctionality = setmetatable({}, {
-    __newindex = function(self, name, functionality)
-        rawset(self, name, functionality)
-        if not DiscordAPI then
-            _G[name] = functionality
-        end
-    end
-})
+---@param global string
+---@param dead function
+function DiscordDeadFunctionality(global, dead)
+    functionalities.alive[global] = _ENV[global]
+    functionalities.dead[global] = dead
+end
 
 if
     GetResourceState('discord_api') == 'started' or
@@ -47,8 +36,9 @@ end
 
 ---@param bool boolean
 local function toggleFunctionality(bool)
-    local functionalities = bool and DiscordAliveFunctionality or DiscordDeadFunctionality
-    for name, functionality in pairs(functionalities) do _G[name] = functionality end
+    for name, functionality in pairs(functionalities[bool and 'alive' or 'dead']) do
+        _ENV[name] = functionality
+    end
 end
 
 AddEventHandler('discord_api:alive', function(initTime)
@@ -65,7 +55,7 @@ end)
 ---@param player number
 ---@return string?
 function GetPlayerDiscordId(player)
-    local identifier = GetPlayerIdentifierByType(player--[[@as string]], 'discord')
+    local identifier = GetPlayerIdentifierByType(player --[[@as string]], 'discord')
     if identifier then
         return identifier:match('discord:(.+)')
     end

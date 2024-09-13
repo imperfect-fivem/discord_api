@@ -1,5 +1,3 @@
-IsDiscordAPIAvailable = GetResourceState('discord_api') ~= 'missing'
-
 function GetPlayerDiscordRoles(player)
     local playerDiscordId, discordMember = GetPlayerDiscordId(player)
     local discordServer = DiscordAPI.Servers.Main
@@ -9,10 +7,9 @@ function GetPlayerDiscordRoles(player)
     return discordMember.roles
 end
 
-if IsDiscordAPIAvailable then
-    _ = DiscordAliveFunctionality + 'GetPlayerDiscordRoles'
-    DiscordDeadFunctionality.GetPlayerDiscordRoles = function() return {} end
-else
-    GetPlayerDiscordRoles = function() return {} end
-    print("discord_api is missing, discord actions won't function.")
+if not DiscordDeadFunctionality then
+    print("^3discord_api^1 is missing, discord actions won't function.^7")
+    DiscordDeadFunctionality = setmetatable({}, { __call = function(_, global, dead) _ENV[global] = dead end })
 end
+
+DiscordDeadFunctionality('GetPlayerDiscordRoles', function() return {} end)
