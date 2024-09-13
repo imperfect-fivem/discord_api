@@ -6,6 +6,7 @@ Lua based [Discord API](https://discord.com/developers/docs) for [FiveM developm
 [Download Link](https://github.com/imperfect-fivem/discord_api/releases/latest/download/discord_api.zip)
 
 ## 📥 Dependencies
+
 [ox_lib](https://github.com/overextended/ox_lib) is required.
 
 ## 🔃 Variables (Convar)
@@ -38,6 +39,10 @@ There is a built-in Alive/Dead API switch which takes place when `discord_api` r
 What it does is pretty simple, just redefines some functions that we choose to be empty (dead) ones, so that we get empty results without have to go through a request that (we know for sure) will fail.  
 When the API is ready (`discord_api` resource is started again), it will automatically redefine those function to the Alive version again.  
 Check this live [example](./examples/functionality.lua).
+
+# 📑 TODOs
+
+- Handle rate limit.
 
 ## 🤖 Language Server
 
